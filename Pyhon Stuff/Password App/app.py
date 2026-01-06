@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request # <--- NEW IMPORT: request
+from flask import Flask, render_template, request
 import random
 
 app = Flask(__name__)
@@ -14,19 +14,16 @@ def gen_pass(length):
 @app.route("/")
 def home():
     return render_template("index.html")
-
-# UPDATED ROUTE: It now accepts "POST" methods (Envelopes)
 @app.route("/generate", methods=["POST"])
 def generate():
-    # 1. Open the envelope and get the data by its name
-    # We convert it to 'int' because inputs always send text strings
     length_from_form = int(request.form.get("length_data"))
+    if length_from_form>=12:
+        strength = "STRONG"
+    else:
+        strength = "WEAK"
     
-    # 2. Use the number to generate the password
     password = gen_pass(length_from_form)
-    
-    # 3. Show the result
-    return render_template("result.html", password=password)
+    return render_template("result.html", password=password, strength=strength)
 
 if __name__ == "__main__":
     app.run(debug=True)
