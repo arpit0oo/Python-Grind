@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <h1>Success!</h1>
+    <p>Here is your new password:</p>
+    
+    <h2 style="color: #00ff41; font-size: 40px; border: 1px dashed #00ff41; display: inline-block; padding: 20px;">
+        {{ password }}
+    </h2>
+    
+    <br><br>
+    
+    <a href="/">
+        <button>GENERATE ANOTHER</button>
+    </a>
+
+</body>
+</html>

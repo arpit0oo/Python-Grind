@@ -1,0 +1,68 @@
+#functions
+'''def add_nums(a, b):
+    return a+b
+
+sum=add_nums(6,10)
+print(sum)'''
+
+#Password Genrator
+#we are onto Phase 4 File handeling, We are gonna save our output in .txt file
+
+'''import random
+def gen_pass(lenth):
+    password=""
+    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%"
+    for char in range (lenth):
+        char=random.choice(chars)
+        password=password+char
+    return password
+user={}
+uname=input("Enter Your Username : ")
+upass=gen_pass(8)
+print("Your Password : ",upass)
+user[uname]=upass
+with open("day3_database.txt", "a")as f:
+    f.write(f"Username: {uname} | Password: {upass}\n")
+print("Saved to day3_database.txt!")'''
+
+"""with open("day3_database.txt", "r") as f:
+    data = f.read()
+    print(data)"""
+
+#Passward Meneger(crazy)
+import random
+def gen_pass(lenth):
+    password=""
+    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%"
+    for char in range (lenth):
+        char=random.choice(chars)
+        password=password+char
+    return password
+
+while True:
+    print("Actions To Perform :\nAdd - (To Add New Users)\nView - (To View List of Users)\nExit - (To Quit)")
+    action=input("Enter Action : ").lower()
+    if action=="exit":
+        print("Goodbey")
+        break
+
+    elif action=="add":
+        user={}
+        uname=input("Enter Your Username : ")
+        upass=gen_pass(8)
+        print("Your Password : ",upass)
+        user[uname]=upass
+        with open("day3_database.txt", "a")as f:
+            f.write(f"Username: {uname} | Password: {upass}\n")
+        print("Saved to day3_database.txt!")
+        print()
+
+    elif action=="view":
+        try:
+            with open("day3_database.txt", "r") as f:
+                data= f.read()
+                print(data)
+        except FileNotFoundError:
+            print("Database Empty! Add A User First.")
+    else:
+        print("invalid response ! ")
