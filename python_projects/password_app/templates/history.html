@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Vault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>THE VAULT</h1>
+    <p>Secure History Log</p>
+    
+    <div style="width: 50%; margin: auto; text-align: left;">
+        {% for row in history_data %}
+        
+        <div style="border: 1px solid #00ff41; padding: 10px; margin: 10px; background-color: #000;">
+            <span style="font-size: 20px; color: white;"> {{ row[1] }} </span>
+            
+            <span style="float: right; color: #00ff41;"> {{ row[2] }} </span>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+    <br>
+    <a href="/">
+        <button>BACK TO GENERATOR</button>
+    </a>
+
+</body>
+</html>
